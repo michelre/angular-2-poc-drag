@@ -1,0 +1,71 @@
+.taskchoices__container{
+  max-width: 400px;
+}
+
+.taskchoice__content {
+  display: flex;
+  min-height: 30px;
+  cursor: pointer;
+
+  img {
+    margin-right: 0;
+    margin-left: auto;
+    max-height: 20px;
+  }
+}
+
+.right-column {
+  min-height: 400px;
+
+  accordion {
+    margin: 0 !important;
+  }
+}
+
+.droppable-container {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+}
+
+.selectedtask__header{
+  display: table;
+
+  div {
+    display: table-cell;
+    width: 20% !important;
+  }
+}
+
+.droppable-container {
+  .card.custom-accordion, .card.custom-accordion .card-header, .panel.custom-accordion {
+    margin: 0 !important;
+    padding: 0;
+  }
+
+  .panel.custom-accordion .panel-body {
+
+  }
+
+  .panel {
+    margin: 0 !important;
+    border: 0;
+    box-shadow: 0 0 0;
+  }
+
+  .table-row{
+    display: flex;
+    min-height: 35px;
+    border: 1px solid black;
+
+    &.table-heading {
+      font-weight: bold;
+    }
+
+    div {
+      width: 20%;
+      border-right: 1px solid black;
+      padding: 5px;
+    }
+  }
+}

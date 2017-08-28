@@ -1,0 +1,144 @@
+<!--<div class="container">
+  <div class="left-column">
+    <p-accordion [multiple]="true">
+      <p-accordionTab *ngFor="let sample of samples" header="{{sample.title}}" [selected]="true">
+        <ul [dragula]='"first-bag"' [dragulaModel]='sample.contents' data-droppable="false" data-copy="true">
+           <li *ngFor="let content of sample.contents" (dblclick)="onDblClickAction(content)">
+             <div>{{content.name}}</div>
+           </li>
+        </ul>
+      </p-accordionTab>
+    </p-accordion>
+    <tree-root [nodes]="taskChoices" [options]="taskChoicesOptions">
+      <ng-template #treeNodeWrapperTemplate let-node let-index="index">
+        <div class="node-wrapper" [class.parent-node]="!node.isLeaf" [style.padding-left]="node.getNodePadding()">
+          <div class="node-content-wrapper"
+            [class.min-height]="!node.isLeaf">
+            <div *ngIf="!node.isLeaf">{{node.data.name}}</div>
+            <div *ngIf="node.isLeaf" [dragula]='"first-bag"' [dragulaModel]='node.children' data-droppable="false" data-copy="true" class="leaf-container">
+              <span>{{node.data.name}}</span>
+              <img src='/assets/images/{{node.data.id}}.png'/>
+            </div>
+          </div>
+          <tree-node-expander [node]="node"></tree-node-expander>
+        </div>
+      </ng-template>
+    </tree-root>
+    <accordion [showArrows]="true" [closeOthers]="false" [expandAll]="true">
+      <accordion-group heading="Accordion heading">
+          <accordion-heading>
+              Or <b>custom</b> <accordion-toggle>heading with clickable zone.</accordion-toggle>
+          </accordion-heading>
+          Accordion group contents.
+      </accordion-group>
+  </accordion>
+
+  </div>
+  <div class="right-column">
+      <div class="droppable-container" [dragula]='"first-bag"' [dragulaModel]='selectedTasks' data-droppable="true" data-copy="false">
+      <p-accordion *ngFor="let selectedSample of selectedSamples">
+        <p-accordionTab header="{{selectedSample.name}}">
+          SOME DATA
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+  </div>
+</div>-->
+
+
+<div class="row">
+  <div class="col-md-3">
+    <accordion class="taskchoices__container">
+      <accordion-group #group *ngFor="let taskCategory of taskChoices" [isOpen]="true">
+        <div accordion-heading>
+          {{taskCategory.name}}
+          <i class="pull-right float-xs-right glyphicon"
+             [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-right': !group?.isOpen}"></i>
+        </div>
+        <div [dragula]='"first-bag"' [dragulaModel]='taskCategory.children' data-droppable="false" data-copy="true">
+          <div *ngFor="let task of taskCategory.children" (dblclick)="onDblClickAction(task)">
+            <div class="taskchoice__content">
+              <div>{{task.name}}</div>
+              <img src='/assets/images/{{task.id}}.png' />
+            </div>
+          </div>
+        </div>
+
+      </accordion-group>
+    </accordion>
+  </div>
+  <div class="col-md-8 right-column">
+    <!--<table class="table">
+      <thead>
+        <tr>
+          <th>Step</th>
+          <th>Name</th>
+          <th>Limits</th>
+          <th>Record</th>
+          <th>Ranges</th>
+        </tr>
+      </thead>
+      <tbody class="droppable-container" [dragula]='"first-bag"' [dragulaModel]='selectedTasks' data-droppable="true" data-copy="false">
+        <tr *ngFor="let selectedTask of selectedTasks; let i = index;" (click)="clickRowAction(i)">
+          <ng-container *ngIf="selectedTask.id !== '_none'">
+            <td>{{i}}<img src="/assets/images/{{selectedTask.id}}.png" /></td>
+            <td>{{selectedTask.name}}</td>
+            <td>{{selectedTask.limits}}</td>
+            <td>{{selectedTask.record}}</td>
+            <td>{{selectedTask.ranges}}</td>
+          </ng-container>
+          <ng-container *ngIf="selectedTask.id === '_none'">
+            <td colspan="5">FOO</td>
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>-->
+    <div class="droppable-container">
+      <!--<div class="table-heading">
+        <div class="table-row">
+          <div class="table-cell"></div>
+          <div class="table-cell">Name</div>
+          <div class="table-cell">Limits</div>
+          <div class="table-cell">Records</div>
+          <div class="table-cell">Ranges</div>
+        </div>
+      </div>
+      <div class="table-body" [dragula]='"first-bag"' [dragulaModel]='selectedTasks' data-droppable="true" data-copy="false">
+        <div class="table-row" *ngFor="let selectedTask of selectedTasks">
+          <div></div>
+          <div class="table-cell">{{selectedTask.name}}</div>
+          <div class="table-cell">{{selectedTask.limits}}</div>
+          <div class="table-cell">{{selectedTask.record}}</div>
+          <div class="table-cell">{{selectedTask.ranges}}</div>
+        </div>
+      </div>-->
+      <div class="">
+        <div class="table-row table-heading">
+          <div class="">Step</div>
+          <div class="">Name</div>
+          <div class="">Limits</div>
+          <div class="">Records</div>
+          <div class="">Ranges</div>
+        </div>
+      </div>
+      <accordion [dragula]='"first-bag"' [dragulaModel]='selectedTasks' data-droppable="true" data-copy="false">
+        <accordion-group #group *ngFor="let selectedTask of selectedTasks; let i = index;" [panelClass]="'custom-accordion'">
+          <div accordion-heading>
+            <div>
+              <div class="table-row">
+                <div>{{i}} <img src="/assets/images/{{selectedTask.id}}.png" /></div>
+                <div class="">{{selectedTask.name}}</div>
+                <div class="">{{selectedTask.limits}}</div>
+                <div class="">{{selectedTask.record}}</div>
+                <div class="">{{selectedTask.ranges}}</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            DATA
+          </div>
+        </accordion-group>
+      </accordion>
+    </div>
+
+</div>
