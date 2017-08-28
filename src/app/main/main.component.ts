@@ -20,7 +20,6 @@ export class MainComponent implements OnInit {
     dragulaService.setOptions('first-bag', {
       copy: (el, source) => source.dataset.copy === 'true',
       accepts: (el, target, source, sibling) => target.dataset.droppable === "true",
-      mirrorContainer: document.body
     });
 
   }
