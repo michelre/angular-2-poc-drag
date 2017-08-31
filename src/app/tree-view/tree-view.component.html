@@ -17,12 +17,24 @@
 <tree-root #tree [nodes]="nodes" [options]="options">
    <ng-template #treeNodeWrapperTemplate let-node let-index="index">
          <tree-node-expander [node]="node"></tree-node-expander>
-         <span (click)="clickNodeAction(node)">
+         <span dropdownToggle (click)="clickNodeAction(node)" (contextmenu)="onContextMenuAction($event, node.data.id)">
            <i *ngIf="node.data.type === 'run'" [class]="service.getStatusIcon(node)"></i>
            <i [class]="service.getIcon(node)"></i>
            <span *ngIf="!editables[node.data.id]">{{node.data.name}}</span>
            <input *ngIf="editables[node.data.id]" [value]="node.data.name" (keypress)="keypressAction(node, $event)" (focusout)="focusOutAction(node)" focus="true"/>
            <i class="fa fa-plus" *ngIf="node.data.type !== 'run'" (click)="addNode(node)"></i>
          </span>
+         <div class="btn-group" dropdown [isOpen]="isDropdownOpen(node.data.id)">
+           <ul *dropdownMenu class="dropdown-menu" role="menu">
+             <li role="menuitem"><a class="dropdown-item" href="#">Action for {{node.data.name}}</a></li>
+             <li role="menuitem"><a class="dropdown-item" href="#">Another action</a>
+             </li>
+             <li role="menuitem"><a class="dropdown-item" href="#">Something else
+               here</a></li>
+             <li class="divider dropdown-divider"></li>
+             <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+             </li>
+           </ul>
+         </div>
       </ng-template>
  </tree-root>

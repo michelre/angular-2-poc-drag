@@ -10,3 +10,8 @@ html, body {
 .margin-bottom-inner{
   margin-bottom: 10px;
 }
+
+//Necessary to correctly display dropdowns
+.tree-children, tree-viewport {
+  overflow: visible !important;
+}

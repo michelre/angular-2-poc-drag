@@ -8,6 +8,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { FocusModule } from 'angular2-focus';
 import { AngularSplitModule } from 'angular-split';
 import { FormsModule } from '@angular/forms';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -29,7 +30,8 @@ import { MathJaxDirective } from './mathjax.directive';
     DragulaModule,
     TreeModule,
     FocusModule.forRoot(),
-    AngularSplitModule
+    AngularSplitModule,
+    BsDropdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

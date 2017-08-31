@@ -9,19 +9,27 @@ import R from 'ramda';
   selector: 'app-tree-view',
   templateUrl: './tree-view.component.html',
   styleUrls: ['./tree-view.component.scss'],
-  providers: [TreeViewService]
+  providers: [TreeViewService],
+  host: {
+    '(document:click)': 'closeDropdownsAction($event)',
+  },
 })
 export class TreeViewComponent implements OnInit {
 
   nodes: any = [];
+
   options: ITreeOptions = {
     isExpandedField: 'expanded'
-  }
+  };
+
   filters: any = {
     name: '',
     status: '',
-  }
+  };
+
   editables : any = {};
+
+  dropdownStatus = {};
 
   @ViewChild(TreeComponent)
   private tree: TreeComponent;
@@ -71,13 +79,27 @@ export class TreeViewComponent implements OnInit {
     if(event.keyCode === 13) {
       this.editables = R.merge(this.editables, { [node.data.id]: false });
       let path = this.service.getPathFromIds(node.path, this.nodes);
-      path = path.concat('name')
+      path = path.concat('name');
       this.nodes = R.set(R.lensPath(path), event.target.value, this.nodes);
     }
   }
 
   focusOutAction(node){
     this.editables = R.merge(this.editables, { [node.data.id]: false });
+  }
+
+  onContextMenuAction(e, id){
+    this.dropdownStatus = {};
+    this.dropdownStatus = R.merge(this.dropdownStatus, { [id]: true })
+    e.preventDefault();
+  }
+
+  isDropdownOpen(id){
+    return R.pathOr(false, [id], this.dropdownStatus);
+  }
+
+  closeDropdownsAction(){
+    this.dropdownStatus = {};
   }
 
 }
