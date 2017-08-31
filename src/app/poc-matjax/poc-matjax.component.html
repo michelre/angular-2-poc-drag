@@ -1,0 +1,23 @@
+
+<div class="container basic-example">
+  <h3>Basic Example with static LaTex</h3>
+  <div MathQuill TexExp='x=-b\pm\sqrt{b^2-4ac}'></div>
+</div>
+
+<div class="container custom-example">
+  <h3>Custom example with typing LaTex</h3>
+  <div class="row">
+    <div class="col-md-6">
+      <textarea rows="5" class="form-control" #tex type="text" [(ngModel)]="inputValue" (keypress)="inputValue=$event.target.value"></textarea>
+    </div>
+    <div class="col-md-6">
+      <div [MathQuill]='inputValue'></div>
+    </div>
+  </div>
+
+</div>
+
+<!--
+\int_{a}^{b} f(x) \ \mathrm{d}x
+2^{\frac{3}{2}}
+-->
