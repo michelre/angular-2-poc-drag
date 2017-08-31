@@ -22,11 +22,13 @@
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "styles.scss",
         "../node_modules/font-awesome/css/font-awesome.min.css",
-        "../node_modules/primeng/resources/primeng.min.css",
-        "../node_modules/primeng/resources/themes/omega/theme.css",
-        "../node_modules/dragula/dist/dragula.min.css"
+        "../node_modules/dragula/dist/dragula.min.css",
+        "../node_modules/mathquill/build/mathquill.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/mathquill/build/mathquill.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

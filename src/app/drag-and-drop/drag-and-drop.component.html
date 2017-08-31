@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-3">
+    <accordion class="taskchoices__container">
+      <accordion-group #group *ngFor="let taskCategory of taskChoices" [isOpen]="true">
+        <div accordion-heading>
+          {{taskCategory.name}}
+          <i class="pull-right float-xs-right glyphicon"
+             [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-right': !group?.isOpen}"></i>
+        </div>
+        <div [dragula]='"first-bag"' [dragulaModel]='taskCategory.children' data-droppable="false" data-copy="true">
+          <div *ngFor="let task of taskCategory.children" (dblclick)="onDblClickAction(task)">
+            <div class="taskchoice__content">
+              <div>{{task.name}}</div>
+              <img src='/assets/images/{{task.id}}.png' />
+            </div>
+          </div>
+        </div>
+
+      </accordion-group>
+    </accordion>
+  </div>
+  <div class="col-md-8 right-column">
+    <div class="droppable-container table">
+      <div>
+        <div class="table-row table-heading">
+          <div>Step</div>
+          <div>Name</div>
+          <div>Limits</div>
+          <div>Records</div>
+          <div>Ranges</div>
+        </div>
+      </div>
+      <accordion [dragula]='"first-bag"' [dragulaModel]='selectedTasks' data-droppable="true" data-copy="false">
+        <accordion-group #group *ngFor="let selectedTask of selectedTasks; let i = index;" [panelClass]="'custom-accordion'">
+          <div accordion-heading>
+            <div>
+              <div class="table-row">
+                <div>{{i}} <img src="/assets/images/{{selectedTask.id}}.png" /></div>
+                <div>{{selectedTask.name}}</div>
+                <div>{{selectedTask.limits}}</div>
+                <div>{{selectedTask.record}}</div>
+                <div>{{selectedTask.ranges}}</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            Configuration step!
+          </div>
+        </accordion-group>
+      </accordion>
+    </div>
+
+</div>
