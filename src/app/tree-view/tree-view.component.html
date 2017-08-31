@@ -1,0 +1,28 @@
+<form class="margin-bottom-inner">
+  <div class="row">
+    <div class="col col-md-2">
+      <input class="form-control" id="filterName" #filterName (keyup)="filterByName(filterName.value, tree.treeModel)" placeholder="filter by name"/>
+    </div>
+    <div class="col col-md-2">
+      <select class="form-control" (change)="filterByStatus($event.target.value, tree.treeModel)">
+        <option value="">--Select a status--</option>
+        <option value="working">Working</option>
+        <option value="todo">Todo</option>
+        <option value="done">Done</option>
+      </select>
+    </div>
+  </div>
+</form>
+
+<tree-root #tree [nodes]="nodes" [options]="options">
+   <ng-template #treeNodeWrapperTemplate let-node let-index="index">
+         <tree-node-expander [node]="node"></tree-node-expander>
+         <span (click)="clickNodeAction(node)">
+           <i *ngIf="node.data.type === 'run'" [class]="service.getStatusIcon(node)"></i>
+           <i [class]="service.getIcon(node)"></i>
+           <span *ngIf="!editables[node.data.id]">{{node.data.name}}</span>
+           <input *ngIf="editables[node.data.id]" [value]="node.data.name" (keypress)="keypressAction(node, $event)" (focusout)="focusOutAction(node)" focus="true"/>
+           <i class="fa fa-plus" *ngIf="node.data.type !== 'run'" (click)="addNode(node)"></i>
+         </span>
+      </ng-template>
+ </tree-root>
