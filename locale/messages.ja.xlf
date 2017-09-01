@@ -5,7 +5,7 @@
       <trans-unit id="957a409c0c297ee22c706f92c85a495e599278da" datatype="html">
         <source>
   Hello, how are you ?
-</source><target>Bonjour, comment ça va</target>
+</source><target>こんにちは、元気ですか ？</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src\app\poc-i18n\poc-i18n.component.ts</context>
           <context context-type="linenumber">1</context>
@@ -14,7 +14,7 @@
       <trans-unit id="794f7feb84cf060dd3c8fe9834fccc082cf327a9" datatype="html">
         <source>
   Hello, with a description inside the i18n attribute ?
-</source><target>Bonjour avec une description à l'intérieur de l'attribut i18n</target>
+</source><target>こんにちは、i18n属性内の説明ですか？</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src\app\poc-i18n\poc-i18n.component.ts</context>
           <context context-type="linenumber">5</context>
@@ -24,7 +24,8 @@
       <trans-unit id="c0227fa431fe7f7e8e87472018dfe165528578e0" datatype="html">
         <source>
   Hello, with a description and the context inside the i18n attribute ?
-</source><target>Bonjour, avec une description et un contexte à l'intérieur de l'attribut i18n</target>
+</source><target>
+こんにちは、i18n属性内の説明とコンテキストについて教えてください。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src\app\poc-i18n\poc-i18n.component.ts</context>
           <context context-type="linenumber">9</context>
@@ -35,14 +36,15 @@
       <trans-unit id="title" datatype="html">
         <source>
   This is the main title with custom id
-</source><target>C'est le titre principal avec un identifiant personnalisé</target>
+</source><target>これはカスタムIDのメインタイトルです</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src\app\poc-i18n\poc-i18n.component.ts</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="060c480363034765b9f2853bb3be7dcc560fb213" datatype="html">
-        <source>image title with i18n-title attribute</source><target>un titre d'image en utilisant un i18n-title attribut</target>
+        <source>image title with i18n-title attribute</source><target>
+i18n-title属性の画像タイトル</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src\app\poc-i18n\poc-i18n.component.ts</context>
           <context context-type="linenumber">17</context>
