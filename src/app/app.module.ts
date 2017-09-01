@@ -18,9 +18,10 @@ import { PocMatjaxComponent } from './poc-matjax/poc-matjax.component';
 import { PocAngularSplitComponent } from './poc-angular-split/poc-angular-split.component';
 
 import { MathJaxDirective } from './mathjax.directive';
+import { PocI18nComponent } from './poc-i18n/poc-i18n.component';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, DragAndDropComponent, TreeViewComponent, PocMatjaxComponent, MathJaxDirective, PocAngularSplitComponent],
+  declarations: [AppComponent, MainComponent, DragAndDropComponent, TreeViewComponent, PocMatjaxComponent, MathJaxDirective, PocAngularSplitComponent, PocI18nComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

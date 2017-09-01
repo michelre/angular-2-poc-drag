@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MathquillService } from 'mathquill-angular2';
 declare var MathJax: any;
 
 @Component({
